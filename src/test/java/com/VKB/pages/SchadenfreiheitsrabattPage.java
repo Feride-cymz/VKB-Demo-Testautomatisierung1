@@ -10,24 +10,6 @@ public class SchadenfreiheitsrabattPage extends BasePage{
     @FindBy(xpath = "//*[@class='title']")
     public WebElement sfTitle;
 
-    @FindBy(xpath = "(//laser-text[@class='grid-child--two-cols'])[1]")
-    public WebElement ihreDtn;
-
-    @FindBy(xpath = "(//div[@class='noInfoTextLabel'])[1]")
-    public WebElement vornameInput;
-
-    @FindBy(xpath = "(//div[@class='noInfoTextLabel'])[2]")
-    public WebElement nachnameInput;
-
-    @FindBy(xpath = "(//div[@class='noInfoTextLabel'])[3]")
-    public WebElement versicherungsNummerInput;
-
-    @FindBy(xpath = "(//div[@class='noInfoTextLabel'])[4]")
-    public WebElement straßeHausNummerInput;
-
-    @FindBy(xpath = "(//div[@class='noInfoTextLabel'])[5]")
-    public WebElement postleitzahlOrtInput;
-
     @FindBy(xpath = "//*[@class='container-buttons__button container-buttons__button--next']")
     public WebElement weiterBtn;
 
@@ -38,23 +20,52 @@ public class SchadenfreiheitsrabattPage extends BasePage{
    public WebElement datenSchtzKlick;
 
    @FindBy(xpath = "//button[@class='footer-button-right']")
-   public WebElement weitrBtn;
+   public WebElement weitrSendBtn;
 
-   @FindBy(xpath = "(//*[text()='Vorname'])[1]")
-   public WebElement vorNameInput;
+   //@FindBy(xpath = "//*[@id='control']")
+  // public WebElement führerscheinSelect;
 
-   @FindBy(xpath = "//*[@id='control']")
-   public WebElement führerscheinSelect;
+   @FindBy(xpath = "//input[@type='tel']")
+   public WebElement datum2000;
 
+   @FindBy(xpath = "(//div[@class='content-wrapper'])[1]")
+   public WebElement nichtAnswesend;
+
+   @FindBy(xpath = "//input[@type='email']")
+   public WebElement email;
+
+    @FindBy(xpath = "//input[@class='submit-input']")
+    public WebElement pdfBtn;
+
+    @FindBy(xpath = "//button[@class='footer-button-right']")
+    public WebElement sendBtn;
+
+    //verstorben locater
+    @FindBy(id = "mat-input-0")
+    public WebElement besitzInput;
+
+    @FindBy(xpath = "(//laser-input[@type='text'])[1]")
+    public WebElement ausstellLands;
 
     public void navigateToradioBtn_Mtd(String radioMenu){
         Driver.get().findElement(By.xpath("//laser-radio[text()=' "+radioMenu+" ']")).click();
     }
 
-    public void führerschein_Mtd(){
+    public void ihreDateninput_Mtd(int index, String data){
+        Driver.get().findElement(By.xpath("(//input[@type='text'])["+index+"]")).sendKeys(data);
+    }
+
+  /* public void angabenZumFührerSchein_Mtd(int index, String daten){
+        Driver.get().findElement(By.xpath("(//laser-input[@type='text'])["+index+"]")).sendKeys(daten);
+    }*/
+
+    /*public void führerschein_Mtd(){
         Select select = new Select(führerscheinSelect);
         select.selectByVisibleText("A");
-    }
+    }*/
+
+
+
 
 
 

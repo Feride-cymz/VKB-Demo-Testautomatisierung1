@@ -11,7 +11,7 @@ public class HomePage_Test extends TestBase{
     @Test
     public void homePageTest() {
 
-        driver.get(ConfigurationReader.get("url"));
+        //driver.get(ConfigurationReader.get("url"));
         Assert.assertEquals(homePage.homePage.getText(),"HOME");
         Assert.assertEquals(homePage.schadenFreiheitsRabatt.getText(),"Schadenfreiheitsrabatt");
         Assert.assertEquals(homePage.unwetterSchaden.getText(),"Unwetterschaden");

@@ -4,26 +4,16 @@ import com.VKB.pages.SchadenfreiheitsrabattPage;
 import com.VKB.utilities.BrowserUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
 public class Schaden_Test extends TestBase{
+
     HomePage homePage= new HomePage();
     SchadenfreiheitsrabattPage schadenfreiheitsrabattPage= new SchadenfreiheitsrabattPage();
-    @Test
-    public void testSchdnNchtAnwsnd() throws InterruptedException {
 
-        homePage.schadenFreiheitsRabatt.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertEquals(schadenfreiheitsrabattPage.sfTitle.getText(),"SF-Übertragung an einen anderen Versicherungsnehmer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.ihreDtn.getText(), "Ihre Daten");
-        Assert.assertEquals(schadenfreiheitsrabattPage.vornameInput.getText(), "Vorname");
-        Assert.assertEquals(schadenfreiheitsrabattPage.nachnameInput.getText(), "Nachname");
-        Assert.assertEquals(schadenfreiheitsrabattPage.versicherungsNummerInput.getText(), "Versicherungsnummer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.straßeHausNummerInput.getText(), "Straße und Hausnummer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.postleitzahlOrtInput.getText(), "Postleitzahl und Ort");
+    @Test
+    public void test1SchdnNchtAnwsnd() throws InterruptedException {
+
         schadenfreiheitsrabattPage.navigateToradioBtn_Mtd("nicht anwesend");
         BrowserUtils.waitFor(2);
         schadenfreiheitsrabattPage.weiterBtn.click();
@@ -37,56 +27,56 @@ public class Schaden_Test extends TestBase{
         BrowserUtils.waitFor(1);
         schadenfreiheitsrabattPage.datenSchtzKlick.click();
         BrowserUtils.waitFor(1);
-        schadenfreiheitsrabattPage.weitrBtn.click();
+        schadenfreiheitsrabattPage.weitrSendBtn.click();
         BrowserUtils.waitFor(1);
-
-        //BrowserUtils.clickWithJS(schadenfreiheitsrabattPage.vorNameInput);
-        schadenfreiheitsrabattPage.vorNameInput.click();
-
-
-       // WebElement vorNameInput = driver.findElement(By.id("Vorname"));
-        schadenfreiheitsrabattPage.vorNameInput.sendKeys("Max");
-
-
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(1, "Max");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(2, "Mustermann");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(4, "999999991234");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(5, "Schlossallee 42");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(6, "81234 München");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(7, "A");
+        schadenfreiheitsrabattPage.datum2000.sendKeys("01.2000");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(8, "Deutschland");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(9, "Max");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(10, "Mustermann");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(11, "Allianz Versicherung");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(12, "KR999999991234");
+        schadenfreiheitsrabattPage.ihreDateninput_Mtd(13, "HH-SO 1005");
+        BrowserUtils.waitFor(1);
+        schadenfreiheitsrabattPage.weitrSendBtn.click();
+        BrowserUtils.waitFor(1);
+        schadenfreiheitsrabattPage.nichtAnswesend.click();
+        BrowserUtils.waitFor(1);
+        schadenfreiheitsrabattPage.email.sendKeys("maxmustermann@gmail.com");
+        BrowserUtils.waitFor(1);
+        schadenfreiheitsrabattPage.weitrSendBtn.click();
+        BrowserUtils.waitFor(1);
+        schadenfreiheitsrabattPage.sendBtn.click();
+        BrowserUtils.waitFor(1);
+        schadenfreiheitsrabattPage.pdfBtn.click();
 
     }
 
     @Test
-    public void testVerstorben() throws InterruptedException {
+    public void test2Verstorben() throws InterruptedException {
 
-        homePage.schadenFreiheitsRabatt.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertEquals(schadenfreiheitsrabattPage.sfTitle.getText(),"SF-Übertragung an einen anderen Versicherungsnehmer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.ihreDtn.getText(), "Ihre Daten");
-        Assert.assertEquals(schadenfreiheitsrabattPage.vornameInput.getText(), "Vorname");
-        Assert.assertEquals(schadenfreiheitsrabattPage.nachnameInput.getText(), "Nachname");
-        Assert.assertEquals(schadenfreiheitsrabattPage.versicherungsNummerInput.getText(), "Versicherungsnummer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.straßeHausNummerInput.getText(), "Straße und Hausnummer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.postleitzahlOrtInput.getText(), "Postleitzahl und Ort");
         BrowserUtils.waitFor(1);
         schadenfreiheitsrabattPage.navigateToradioBtn_Mtd("verstorben");
         BrowserUtils.waitFor(2);
         schadenfreiheitsrabattPage.weiterBtn.click();
+        //schadenfreiheitsrabattPage.datumInput.sendKeys("04.2004");
+        //schadenfreiheitsrabattPage.ausstellLands.sendKeys("Deutschland");
 
-
+        /*schadenfreiheitsrabattPage.angabenZumFührerSchein_Mtd(1, "Deutschland");
+        schadenfreiheitsrabattPage.angabenZumFührerSchein_Mtd(2, "Elke");
+        schadenfreiheitsrabattPage.angabenZumFührerSchein_Mtd(3, "Mustermann");*/
 
 
     }
 
 
-
     @Test
-    public void testAnwesend() throws InterruptedException {
-
-        homePage.schadenFreiheitsRabatt.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Assert.assertEquals(schadenfreiheitsrabattPage.sfTitle.getText(),"SF-Übertragung an einen anderen Versicherungsnehmer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.ihreDtn.getText(), "Ihre Daten");
-        Assert.assertEquals(schadenfreiheitsrabattPage.vornameInput.getText(), "Vorname");
-        Assert.assertEquals(schadenfreiheitsrabattPage.nachnameInput.getText(), "Nachname");
-        Assert.assertEquals(schadenfreiheitsrabattPage.versicherungsNummerInput.getText(), "Versicherungsnummer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.straßeHausNummerInput.getText(), "Straße und Hausnummer");
-        Assert.assertEquals(schadenfreiheitsrabattPage.postleitzahlOrtInput.getText(), "Postleitzahl und Ort");
+    public void test3Anwesend() throws InterruptedException {
         BrowserUtils.waitFor(2);
         schadenfreiheitsrabattPage.navigateToradioBtn_Mtd("anwesend");
         BrowserUtils.waitFor(2);
@@ -95,3 +85,7 @@ public class Schaden_Test extends TestBase{
 
     }
 }
+
+
+
+
