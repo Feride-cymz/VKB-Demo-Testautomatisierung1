@@ -55,6 +55,8 @@ public class Schaden_Test extends TestBase{
         BrowserUtils.waitFor(1);
         schadenfreiheitsrabattPage.pdfBtn.click();
 
+        //
+
     }
 
     @Test
